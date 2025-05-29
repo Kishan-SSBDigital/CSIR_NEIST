@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, ChevronDown, Globe, Search } from 'lucide-react';
 import Container from './ui/Container';
 import Button from './ui/Button';
+import LOGO from '../asset/csir-new-logo.jpg'; // Adjust the path as necessary
+import LOGO2 from '../asset/CSIRNEIST_Jorhat.png'; // Adjust the path as necessary
 
 interface NavItem {
   label: string;
@@ -13,8 +15,8 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
-  { 
-    label: 'Services', 
+  {
+    label: 'Services',
     href: '/services',
     children: [
       { label: 'Citizen Services', href: '/services/citizen' },
@@ -52,40 +54,97 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header 
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
-      }`}
+    <header
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+        }`}
       role="banner"
     >
-      {/* Top bar with language, search, etc. */}
+      {/* Top bar with language, search, etc.
       <div className="bg-blue-900 text-white py-2 text-sm">
         <Container>
           <div className="flex justify-between items-center">
             <div className="flex space-x-4">
-              <span className="hidden sm:inline">Government of Example Nation</span>
+              <span className="hidden sm:inline">CSIR - North-East Institute of Science and Technology</span>
               <a href="#skip-to-main" className="sr-only focus:not-sr-only">Skip to main content</a>
             </div>
             <div className="flex items-center space-x-4">
-              <button 
-                className="flex items-center text-sm" 
+              <button
+                className="flex items-center text-sm"
                 aria-label="Change language"
               >
-                <Globe size={14} className="mr-1" /> 
-                <span className="hidden sm:inline">English</span>
+                <Globe size={14} className="mr-1" />
+                <div className="relative inline-block w-48">
+                  <select className="w-full appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="gu">ગુજરાતી</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                    <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.08z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+
               </button>
-              <button 
-                className="flex items-center text-sm" 
+              <button
+                className="flex items-center text-sm"
                 aria-label="Search"
               >
-                <Search size={14} className="mr-1" /> 
+                <Search size={14} className="mr-1" />
                 <span className="hidden sm:inline">Search</span>
               </button>
             </div>
           </div>
         </Container>
+      </div> */}
+
+      <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white text-sm py-2 shadow-md">
+        <Container>
+          <div className="flex justify-between items-center">
+            {/* Left side */}
+            <div className="flex items-center space-x-4">
+              <span className="hidden sm:inline font-semibold tracking-wide">
+                CSIR - North-East Institute of Science and Technology
+              </span>
+              <a href="#skip-to-main" className="sr-only focus:not-sr-only focus:outline-none focus:ring-2 focus:ring-white rounded px-2 py-1 bg-blue-800">
+                Skip to main content
+              </a>
+            </div>
+
+            {/* Right side */}
+            <div className="flex items-center space-x-4">
+              {/* Language Selector */}
+              <div className="relative">
+                <select
+                  aria-label="Change language"
+                  className="appearance-none bg-white text-gray-800 text-sm border border-gray-300 py-2 pl-3 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition-all duration-200"
+                >
+                  <option value="en">English</option>
+                  <option value="hi">हिंदी</option>
+                  <option value="gu">ગુજરાતી</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500">
+                  <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.08z" clipRule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Search Button */}
+              <button
+                className="flex items-center gap-1 text-white hover:text-blue-200 transition duration-200 focus:outline-none focus:ring-2 focus:ring-white rounded px-2 py-1"
+                aria-label="Search"
+              >
+                <Search size={16} />
+                <span className="hidden sm:inline font-medium">Search</span>
+              </button>
+            </div>
+          </div>
+        </Container>
       </div>
-      
+
+
       {/* Main navbar */}
       <nav className="bg-white" role="navigation" aria-label="Main navigation">
         <Container>
@@ -93,15 +152,28 @@ const Navbar: React.FC = () => {
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center">
-                <div className="flex items-center">
-                  <div className="h-8 w-8 bg-blue-800 rounded flex items-center justify-center mr-2">
-                    <span className="text-white font-bold">G</span>
+                <div className="flex items-center space-x-2">
+                  <div className="flex items-center ">
+                    <img
+                      src={LOGO}
+                      alt="CSIR-NEIST Logo"
+                      className="h-16 w-auto mr-2"
+                    />
                   </div>
-                  <div className="font-bold text-lg text-blue-900">GOV<span className="text-red-700">PORTAL</span></div>
+                  <div className="flex items-center text-blue-800 font-bold text-2xl">
+                    CSIR-NEIST
+                  </div>
+                  <div className="flex items-center">
+                    <img
+                      src={LOGO2}
+                      alt="CSIR-NEIST Logo"
+                      className="h-14 w-auto ml-2"
+                    />
+                  </div>
                 </div>
               </Link>
             </div>
-            
+
             {/* Desktop Menu */}
             <div className="hidden md:flex md:items-center md:space-x-1">
               {navItems.map((item) => (
@@ -120,10 +192,9 @@ const Navbar: React.FC = () => {
                     <NavLink
                       to={item.href}
                       className={({ isActive }) =>
-                        `px-3 py-2 rounded-md text-sm font-medium ${
-                          isActive
-                            ? 'text-blue-800 bg-blue-50'
-                            : 'text-gray-700 hover:bg-slate-100 hover:text-blue-800'
+                        `px-3 py-2 rounded-md text-sm font-medium ${isActive
+                          ? 'text-blue-800 bg-blue-50'
+                          : 'text-gray-700 hover:bg-slate-100 hover:text-blue-800'
                         }`
                       }
                     >
@@ -134,9 +205,8 @@ const Navbar: React.FC = () => {
                   {/* Dropdown menu */}
                   {item.children && (
                     <div
-                      className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 transition-all duration-200 origin-top-right ${
-                        openSubmenu === item.label ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-                      }`}
+                      className={`absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-10 transition-all duration-200 origin-top-right ${openSubmenu === item.label ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
+                        }`}
                     >
                       <div className="py-1" role="menu" aria-orientation="vertical">
                         {item.children.map((child) => (
@@ -144,10 +214,9 @@ const Navbar: React.FC = () => {
                             key={child.label}
                             to={child.href}
                             className={({ isActive }) =>
-                              `block px-4 py-2 text-sm ${
-                                isActive
-                                  ? 'text-blue-800 bg-blue-50'
-                                  : 'text-gray-700 hover:bg-slate-100 hover:text-blue-800'
+                              `block px-4 py-2 text-sm ${isActive
+                                ? 'text-blue-800 bg-blue-50'
+                                : 'text-gray-700 hover:bg-slate-100 hover:text-blue-800'
                               }`
                             }
                             role="menuitem"
@@ -161,14 +230,14 @@ const Navbar: React.FC = () => {
                 </div>
               ))}
             </div>
-            
+
             {/* Login button */}
             <div className="hidden md:block">
               <Button variant="primary" size="sm">
                 Citizen Login
               </Button>
             </div>
-            
+
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
@@ -183,7 +252,7 @@ const Navbar: React.FC = () => {
             </div>
           </div>
         </Container>
-        
+
         {/* Mobile menu */}
         <div className={`md:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
           <div className="px-2 pt-2 pb-3 space-y-1 border-t">
@@ -206,10 +275,9 @@ const Navbar: React.FC = () => {
                             key={child.label}
                             to={child.href}
                             className={({ isActive }) =>
-                              `block px-3 py-2 rounded-md text-sm font-medium ${
-                                isActive
-                                  ? 'text-blue-800 bg-blue-50'
-                                  : 'text-gray-500 hover:bg-gray-50 hover:text-blue-800'
+                              `block px-3 py-2 rounded-md text-sm font-medium ${isActive
+                                ? 'text-blue-800 bg-blue-50'
+                                : 'text-gray-500 hover:bg-gray-50 hover:text-blue-800'
                               }`
                             }
                             onClick={() => setIsMenuOpen(false)}
@@ -224,10 +292,9 @@ const Navbar: React.FC = () => {
                   <NavLink
                     to={item.href}
                     className={({ isActive }) =>
-                      `block px-3 py-2 rounded-md text-base font-medium ${
-                        isActive
-                          ? 'text-blue-800 bg-blue-50'
-                          : 'text-gray-700 hover:bg-gray-50 hover:text-blue-800'
+                      `block px-3 py-2 rounded-md text-base font-medium ${isActive
+                        ? 'text-blue-800 bg-blue-50'
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-blue-800'
                       }`
                     }
                     onClick={() => setIsMenuOpen(false)}
