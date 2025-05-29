@@ -174,7 +174,8 @@ const AboutPage: React.FC = () => {
       <Section title="Organizational Structure" subtitle="How we are organized to serve you better">
         <div className="max-w-4xl mx-auto">
           <img 
-            src="https://images.pexels.com/photos/6478537/pexels-photo-6478537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+            // src="https://images.pexels.com/photos/6478537/pexels-photo-6478537.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+            src="https://img.freepik.com/premium-vector/corporate-organizational-chart-with-business-avatar-icons_122818-1738.jpg?ga=GA1.1.1522514959.1737997002&semt=ais_hybrid&w=740"
             alt="Government organizational meeting" 
             className="w-full h-auto rounded-lg mb-8"
           />

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, ChevronDown, Globe, Search } from 'lucide-react';
+import { Link, Navigate, NavLink } from 'react-router-dom';
+import { Menu, X, ChevronDown, Search } from 'lucide-react';
 import Container from './ui/Container';
+import { useNavigate } from 'react-router-dom';
 import Button from './ui/Button';
-import LOGO from '../asset/csir-new-logo.jpg'; // Adjust the path as necessary
-import LOGO2 from '../asset/CSIRNEIST_Jorhat.png'; // Adjust the path as necessary
+import LOGO from '../asset/csir-new-logo.jpg';
+import LOGO2 from '../asset/CSIRNEIST_Jorhat.png';
 
 interface NavItem {
   label: string;
@@ -15,15 +16,16 @@ interface NavItem {
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
-  {
-    label: 'Services',
-    href: '/services',
-    children: [
-      { label: 'Citizen Services', href: '/services/citizen' },
-      { label: 'Business Services', href: '/services/business' },
-      { label: 'Digital Services', href: '/services/digital' },
-    ]
-  },
+  { label: 'Services', href: '/services' },
+  // {
+  //   label: 'Services',
+  //   href: '/services',
+  //   children: [
+  //     { label: 'Citizen Services', href: '/services/citizen' },
+  //     { label: 'Business Services', href: '/services/business' },
+  //     { label: 'Digital Services', href: '/services/digital' },
+  //   ]
+  // },
   { label: 'Projects', href: '/projects' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Contact Us', href: '/contact' },
@@ -53,52 +55,14 @@ const Navbar: React.FC = () => {
     setOpenSubmenu(prev => prev === label ? null : label);
   };
 
+  const navigate = useNavigate();
+
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
         }`}
       role="banner"
     >
-      {/* Top bar with language, search, etc.
-      <div className="bg-blue-900 text-white py-2 text-sm">
-        <Container>
-          <div className="flex justify-between items-center">
-            <div className="flex space-x-4">
-              <span className="hidden sm:inline">CSIR - North-East Institute of Science and Technology</span>
-              <a href="#skip-to-main" className="sr-only focus:not-sr-only">Skip to main content</a>
-            </div>
-            <div className="flex items-center space-x-4">
-              <button
-                className="flex items-center text-sm"
-                aria-label="Change language"
-              >
-                <Globe size={14} className="mr-1" />
-                <div className="relative inline-block w-48">
-                  <select className="w-full appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
-                    <option value="en">English</option>
-                    <option value="hi">हिंदी</option>
-                    <option value="gu">ગુજરાતી</option>
-                  </select>
-                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                    <svg className="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.25a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.08z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
-
-              </button>
-              <button
-                className="flex items-center text-sm"
-                aria-label="Search"
-              >
-                <Search size={14} className="mr-1" />
-                <span className="hidden sm:inline">Search</span>
-              </button>
-            </div>
-          </div>
-        </Container>
-      </div> */}
-
       <div className="bg-gradient-to-r from-blue-900 to-blue-700 text-white text-sm py-2 shadow-md">
         <Container>
           <div className="flex justify-between items-center">
@@ -233,9 +197,12 @@ const Navbar: React.FC = () => {
 
             {/* Login button */}
             <div className="hidden md:block">
-              <Button variant="primary" size="sm">
-                Citizen Login
-              </Button>
+              <button 
+        className="bg-blue-700 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-800 transition"
+        onClick={() => navigate('/login')}
+      >
+        Citizen Login
+      </button>
             </div>
 
             {/* Mobile menu button */}
@@ -305,10 +272,15 @@ const Navbar: React.FC = () => {
               </div>
             ))}
             <div className="pt-2">
-              <Button variant="primary" size="sm" className="w-full">
-                Citizen Login
-              </Button>
-            </div>
+      <Button 
+        variant="primary" 
+        size="sm" 
+        className="w-full"
+        onClick={() => Navigate('/login')}
+      >
+        Citizen Login
+      </Button>
+    </div>
           </div>
         </div>
       </nav>

@@ -150,7 +150,7 @@ const ServicesPage: React.FC = () => {
                 </li>
               </ul>
               <a
-                href="/services/citizen"
+                href="/services"
                 className="block w-full text-center bg-blue-700 hover:bg-blue-800 text-white font-medium py-2 px-4 rounded transition-colors"
               >
                 Explore Citizen Services
@@ -184,7 +184,7 @@ const ServicesPage: React.FC = () => {
                 </li>
               </ul>
               <a
-                href="/services/business"
+                href="/services"
                 className="block w-full text-center bg-emerald-700 hover:bg-emerald-800 text-white font-medium py-2 px-4 rounded transition-colors"
               >
                 Explore Business Services
@@ -218,7 +218,7 @@ const ServicesPage: React.FC = () => {
                 </li>
               </ul>
               <a
-                href="/services/digital"
+                href="/services"
                 className="block w-full text-center bg-amber-700 hover:bg-amber-800 text-white font-medium py-2 px-4 rounded transition-colors"
               >
                 Explore Digital Services
